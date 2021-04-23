@@ -1,0 +1,116 @@
+# dune exec ./test.exe
+# OCAMLPARAM: unset
+# Workspace root: /home/zouguanyun/workplace
+$ /usr/bin/nproc > /tmp/dune025108.output 2> /dev/null
+# Auto-detected concurrency: 8
+# disable binary cache
+$ /home/zouguanyun/.opam/4.12.0/bin/ocamlc.opt -config > /tmp/dune5a4949.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dyn
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path = Some External "/home/zouguanyun/.opam/4.12.0/lib/toplevel"
+#  ; ocaml_bin = External "/home/zouguanyun/.opam/4.12.0/bin"
+#  ; ocaml = Ok External "/home/zouguanyun/.opam/4.12.0/bin/ocaml"
+#  ; ocamlc = External "/home/zouguanyun/.opam/4.12.0/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/home/zouguanyun/.opam/4.12.0/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/home/zouguanyun/.opam/4.12.0/bin/ocamldep.opt"
+#  ; ocamlmklib =
+#      Ok External "/home/zouguanyun/.opam/4.12.0/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" : "/home/zouguanyun/.opam/4.12.0/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/home/zouguanyun/.opam/4.12.0/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/zouguanyun/workplace"
+#        ; "INSIDE_DUNE" : "/home/zouguanyun/workplace/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/home/zouguanyun/workplace/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/home/zouguanyun/workplace/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/home/zouguanyun/workplace/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/home/zouguanyun/.opam/4.12.0/lib" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.12.0"
+#      ; standard_library_default = "/home/zouguanyun/.opam/4.12.0/lib/ocaml"
+#      ; standard_library = "/home/zouguanyun/.opam/4.12.0/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; bytecomp_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; native_c_libraries = [ "-lm"; "-ldl" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X029"
+#      ; cmi_magic_number = "Caml1999I029"
+#      ; cmo_magic_number = "Caml1999O029"
+#      ; cma_magic_number = "Caml1999A029"
+#      ; cmx_magic_number = "Caml1999Y029"
+#      ; cmxa_magic_number = "Caml1999Z029"
+#      ; ast_impl_magic_number = "Caml1999M029"
+#      ; ast_intf_magic_number = "Caml1999N029"
+#      ; cmxs_magic_number = "Caml1999D029"
+#      ; cmt_magic_number = "Caml1999T029"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+# Workspace root: /home/zouguanyun/workplace
+$ (cd _build/default && /home/zouguanyun/.opam/4.12.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .test.eobjs/byte -I /home/zouguanyun/.opam/4.12.0/lib/bigarray-compat -I /home/zouguanyun/.opam/4.12.0/lib/bytes -I /home/zouguanyun/.opam/4.12.0/lib/camlzip -I /home/zouguanyun/.opam/4.12.0/lib/ctypes -I /home/zouguanyun/.opam/4.12.0/lib/eigen -I /home/zouguanyun/.opam/4.12.0/lib/eigen/cpp -I /home/zouguanyun/.opam/4.12.0/lib/integers -I /home/zouguanyun/.opam/4.12.0/lib/npy -I /home/zouguanyun/.opam/4.12.0/lib/owl -I /home/zouguanyun/.opam/4.12.0/lib/owl-base -I /home/zouguanyun/.opam/4.12.0/lib/zip -I .angle.objs/byte -I .matrix.objs/byte -no-alias-deps -opaque -o .test.eobjs/byte/dune__exe__Test.cmo -c -impl test.ml)
+$ (cd _build/default && /home/zouguanyun/.opam/4.12.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .test.eobjs/byte -I .test.eobjs/native -I /home/zouguanyun/.opam/4.12.0/lib/bigarray-compat -I /home/zouguanyun/.opam/4.12.0/lib/bytes -I /home/zouguanyun/.opam/4.12.0/lib/camlzip -I /home/zouguanyun/.opam/4.12.0/lib/ctypes -I /home/zouguanyun/.opam/4.12.0/lib/eigen -I /home/zouguanyun/.opam/4.12.0/lib/eigen/cpp -I /home/zouguanyun/.opam/4.12.0/lib/integers -I /home/zouguanyun/.opam/4.12.0/lib/npy -I /home/zouguanyun/.opam/4.12.0/lib/owl -I /home/zouguanyun/.opam/4.12.0/lib/owl-base -I /home/zouguanyun/.opam/4.12.0/lib/zip -I .angle.objs/byte -I .angle.objs/native -I .matrix.objs/byte -I .matrix.objs/native -intf-suffix .ml -no-alias-deps -opaque -o .test.eobjs/native/dune__exe__Test.cmx -c -impl test.ml)
+$ (cd _build/default && /home/zouguanyun/.opam/4.12.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test.exe /home/zouguanyun/.opam/4.12.0/lib/bigarray-compat/bigarray_compat.cmxa /home/zouguanyun/.opam/4.12.0/lib/integers/integers.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/integers /home/zouguanyun/.opam/4.12.0/lib/ctypes/ctypes.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/ctypes /home/zouguanyun/.opam/4.12.0/lib/ocaml/str.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/ocaml /home/zouguanyun/.opam/4.12.0/lib/ctypes/cstubs.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/ctypes /home/zouguanyun/.opam/4.12.0/lib/eigen/cpp/eigen_cpp_stubs.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/eigen/cpp /home/zouguanyun/.opam/4.12.0/lib/eigen/eigen.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/eigen /home/zouguanyun/.opam/4.12.0/lib/ocaml/unix.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/ocaml /home/zouguanyun/.opam/4.12.0/lib/ocaml/bigarray.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/ocaml /home/zouguanyun/.opam/4.12.0/lib/owl-base/owl_base.cmxa /home/zouguanyun/.opam/4.12.0/lib/zip/zip.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/zip /home/zouguanyun/.opam/4.12.0/lib/npy/npy.cmxa /home/zouguanyun/.opam/4.12.0/lib/owl/owl.cmxa -I /home/zouguanyun/.opam/4.12.0/lib/owl angle.cmxa matrix.cmxa .test.eobjs/native/dune__exe__Test.cmx)

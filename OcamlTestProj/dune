@@ -1,0 +1,16 @@
+;; This declares the hello_world executable implemented by hello_world.ml
+
+(library
+ (name deter)
+ (modules deter)
+ )
+(library
+ (name json_handler)
+ (modules json_handler)
+ (libraries yojson)
+ )
+(executable
+ (name server)
+ (modules server)
+ (libraries json_handler deter lwt cohttp-lwt-unix cohttp yojson)
+ )

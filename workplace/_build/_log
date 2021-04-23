@@ -1,0 +1,6 @@
+### Starting build.
+# Target: check_matrixReb.ml.depends, tags: { package(core), package(owl), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:check_matrixReb.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package owl -package core -ppx 'ppx-jane -as-ppx' -modules check_matrixReb.ml > check_matrixReb.ml.depends
+# Target: check_matrixReb.inferred.mli, tags: { package(core), package(owl), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:check_matrixReb.ml, infer_interface, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -i -thread -short-paths -package owl -package core -ppx 'ppx-jane -as-ppx' check_matrixReb.ml > check_matrixReb.inferred.mli
+# Compilation successful.
