@@ -13,7 +13,7 @@ let jsontest json : string =
     let pos = pos_tr_B2A (get_posInfo json "PosInfo") ~alpha:45. ~beta:45. in 
     let back_json = `Assoc[
                             (
-                                "PosInfoRes1", 
+                                "PosInfoRes", 
                                 `List
                                 [
                                     `Float pos.x;
@@ -22,7 +22,7 @@ let jsontest json : string =
                                 ]
                             );
                             (
-                                "PosInfoRes2", 
+                                "TestRes", 
                                 `List
                                 [
                                     `Float pos.x;

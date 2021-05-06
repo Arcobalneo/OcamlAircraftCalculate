@@ -5,6 +5,7 @@
  (modules angle)
  (libraries owl)
  )
+
 (library
  (name matrix)
  (modules matrix)
@@ -15,11 +16,19 @@
  (name deter)
  (modules deter)
  )
+
+(library
+ (name base_calculate)
+ (modules base_calculate)
+ (libraries owl angle)
+ )
+
 (library
  (name json_handler)
  (modules json_handler)
  (libraries yojson matrix)
  )
+
 
 
 

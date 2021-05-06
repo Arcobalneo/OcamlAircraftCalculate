@@ -8,8 +8,21 @@
  (modules matrix)
  (libraries owl angle)
  )
+
+(library
+ (name base_calculate)
+ (modules base_calculate)
+ (libraries owl)
+ )
+
+(library
+ (name quaternion)
+ (modules quaternion)
+ (libraries owl angle)
+ )
+
 (executable
  (name test)
  (modules test)
- (libraries owl angle matrix)
+ (libraries owl angle matrix base_calculate quaternion)
  )

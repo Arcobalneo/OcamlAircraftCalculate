@@ -2,6 +2,12 @@ open Owl
 
 type angle = float
 type radian = float
+type ruler_angle = {
+    yaw:float;
+    pitch:float;
+    roll:float;
+}
+
 let angle2radian x = Const.pi *. x /. 180.
 
 let check_iszero x = if (-.0.0001 < x && x < 0.0001) then 0. else x

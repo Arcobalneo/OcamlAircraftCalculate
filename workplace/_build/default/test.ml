@@ -59,5 +59,11 @@ let test_pos = {x = 1.; y = 2.; z = 3.}
 let res_pos = pos_tr_B2A test_pos ~alpha:45. ~beta:45.
 let () = Printf.printf "pos is (%f, %f, %f)\n" res_pos.x res_pos.y res_pos.z
 
+open Base_calculate
+let () = Printf.printf "test base calculate: %f\n" (mechanical_power ~output_torque:1.0 ~propeller_speed:2.0)
 
-
+open Quaternion
+let testq = {q0 = 5.0; qv = (1.0, 2.0, 3.0)}
+let testq2 = {q0 = 4.0; qv = (3.0, 2.0, 1.0)}
+let test2mat = vectorizate testq
+let () = show_mat test2mat; Printf.printf "test q: %f\n" (mold testq); showq (mul testq testq2)

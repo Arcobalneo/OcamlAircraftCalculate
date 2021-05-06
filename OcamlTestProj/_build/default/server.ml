@@ -113,7 +113,7 @@ let server =
     let meth = req |> Request.meth |> Code.string_of_method in
     let headers = req |> Request.headers |> Header.to_string in
     ( body |> Cohttp_lwt.Body.to_string >|= fun body ->
-      Printf.eprintf "Uri: %s\nMethod: %s\nHeaders\nHeaders: %s\nBody: %s" uri meth headers body;
+      Printf.eprintf "\nUri: %s\nMethod: %s\nHeaders: %s Body: %s" uri meth headers body;
       flush stderr;
       let body_json = Yojson.Basic.from_string body in
       match body_json with
