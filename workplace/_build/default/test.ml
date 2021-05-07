@@ -66,4 +66,10 @@ open Quaternion
 let testq = {q0 = 5.0; qv = (1.0, 2.0, 3.0)}
 let testq2 = {q0 = 4.0; qv = (3.0, 2.0, 1.0)}
 let test2mat = vectorizate testq
-let () = show_mat test2mat; Printf.printf "test q: %f\n" (mold testq); showq (mul testq testq2)
+let test_ruler = q_tr_eulerAngle testq 
+let () = show_mat test2mat; 
+         Printf.printf "test q: %f\n" (mold testq); 
+         showq (mul testq testq2);
+         showq (get_vector_rotate_q (1., 2., 3.) (4., 5., 6.));
+         show_mat (q_tr_mat testq);
+         Printf.printf "ruler angle: yaw: %f pitch: %f roll: %f\n" test_ruler.yaw test_ruler.pitch test_ruler.roll 

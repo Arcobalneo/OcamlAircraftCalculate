@@ -22,8 +22,8 @@ val mul : q -> q -> q
 val rotation_shaft_angle_tr_q : float*float*float -> angle -> q 
 
 (*生成表示向量旋转的四元数 *)
-(*val get_vector_rotate_q : Mat.mat -> Mat.mat -> q
+val get_vector_rotate_q : float*float*float -> float*float*float -> q
 
 val q_tr_mat : q -> Mat.mat
 
-val q_tr_eulerAngle : q -> ruler_angle *)
+val q_tr_eulerAngle : q -> ruler_angle 
