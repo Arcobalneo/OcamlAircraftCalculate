@@ -1,11 +1,21 @@
 open Owl
 
 type angle = float
+
 type radian = float
+
 type ruler_angle = {
     yaw:float;
     pitch:float;
     roll:float;
+}
+
+type angle_info = {
+    alpha:float;
+    beta:float;
+    theta:float;
+    phi:float;
+    psi:float;
 }
 
 let angle2radian x = Const.pi *. x /. 180.

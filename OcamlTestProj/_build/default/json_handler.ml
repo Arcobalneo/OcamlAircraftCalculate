@@ -1,3 +1,4 @@
+open Angle
 open Matrix
 let get_arr2 json name : float list list =
     let open Yojson.Basic.Util in
@@ -9,27 +10,48 @@ let get_posInfo json name : pos =
     let pos_lst = json |> member name |> member "Content" |> to_list |> filter_float in 
     {x = (List.nth pos_lst 0); y = (List.nth pos_lst 1); z = (List.nth pos_lst 2)}
 
+let get_angleInfo json name : angle_info =
+    let open Yojson.Basic.Util in
+    let alpha_v = json |> member name |> member "Angle" |> member "Alpha" |> to_float in 
+    let beta_v = json |> member name |> member "Angle" |> member "Beta" |> to_float in 
+    let theta_v = json |> member name |> member "Angle" |> member "Theta" |> to_float in 
+    let phi_v = json |> member name |> member "Angle" |> member "Phi" |> to_float in 
+    let psi_v = json |> member name |> member "Angle" |> member "Psi" |> to_float in 
+    {alpha = alpha_v; beta = beta_v; theta = theta_v; phi = phi_v; psi = psi_v;}
+
+
 let jsontest json : string = 
-    let pos = pos_tr_B2A (get_posInfo json "PosInfo") ~alpha:45. ~beta:45. in 
+    let angle = get_angleInfo json "PosInfo" in 
+    let pos_B2A = pos_tr_B2A (get_posInfo json "PosInfo") ~alpha:(angle.alpha) ~beta:(angle.beta) in 
+    let pos_B2E = pos_tr_B2E (get_posInfo json "PosInfo") ~theta:(angle.theta) ~phi:(angle.phi) ~psi:(angle.psi) in 
     let back_json = `Assoc[
                             (
-                                "PosInfoRes", 
+                                "PosInfoRes_B2A", 
                                 `List
                                 [
-                                    `Float pos.x;
-                                    `Float pos.y;
-                                    `Float pos.z;
+                                    `Float pos_B2A.x;
+                                    `Float pos_B2A.y;
+                                    `Float pos_B2A.z;
+                                ]
+                            );
+                            (
+                                "PosInfoRes_B2E", 
+                                `List
+                                [
+                                    `Float pos_B2E.x;
+                                    `Float pos_B2E.y;
+                                    `Float pos_B2E.z;
                                 ]
                             );
                             (
                                 "TestRes", 
                                 `List
                                 [
-                                    `Float pos.x;
-                                    `Float pos.x;
-                                    `Float pos.x;
+                                    `Float pos_B2A.x;
+                                    `Float pos_B2A.y;
+                                    `Float pos_B2A.z;
                                 ]
-                            )
+                            );
                         ] in 
     Yojson.Basic.pretty_to_string back_json
 

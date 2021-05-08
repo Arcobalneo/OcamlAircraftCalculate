@@ -86,3 +86,9 @@ let pos_tr_B2A pos ~(alpha:angle) ~(beta:angle) : pos =
   let res_mat = Mat.(tr_mat *@ pos_mat) in 
   mat2pos res_mat
 
+let pos_tr_B2E pos ~(theta:angle) ~(phi:angle) ~(psi:angle) : pos = 
+  let pos_mat = pos2mat pos in 
+  let tr_arr2 = arr2_B2E ~theta:theta ~phi:phi ~psi:psi in 
+  let tr_mat = creat_mat_byarr2 tr_arr2 in 
+  let res_mat = Mat.(tr_mat *@ pos_mat) in 
+  mat2pos res_mat
