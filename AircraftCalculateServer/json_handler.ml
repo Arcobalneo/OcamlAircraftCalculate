@@ -20,7 +20,7 @@ let get_angleInfo json name : angle_info =
     {alpha = alpha_v; beta = beta_v; theta = theta_v; phi = phi_v; psi = psi_v;}
 
 
-let jsontest json : string = 
+let jsonproc json : string = 
     let angle = get_angleInfo json "PosInfo" in 
     let pos_B2A = pos_tr_B2A (get_posInfo json "PosInfo") ~alpha:(angle.alpha) ~beta:(angle.beta) in 
     let pos_B2E = pos_tr_B2E (get_posInfo json "PosInfo") ~theta:(angle.theta) ~phi:(angle.phi) ~psi:(angle.psi) in 
