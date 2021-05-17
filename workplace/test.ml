@@ -45,7 +45,7 @@ let () = show_arr2 check_case1;
          show_mat new_matrix;
          print_endline "\n";
          show_mat new_matrix2; *)
-         
+open Angle
 open Matrix
 
 (* let x = Mat.create 2 3 2.
@@ -57,19 +57,25 @@ let () = show_mat x;show_mat y; show_mat mul_test *)
 
 let test_pos = {x = 1.; y = 2.; z = 3.}
 let res_pos = pos_tr_B2A test_pos ~alpha:45. ~beta:45.
-let () = Printf.printf "pos is (%f, %f, %f)\n" res_pos.x res_pos.y res_pos.z
+(* let () = Printf.printf "pos is (%f, %f, %f)\n" res_pos.x res_pos.y res_pos.z *)
 
-open Base_calculate
-let () = Printf.printf "test base calculate: %f\n" (mechanical_power ~output_torque:1.0 ~propeller_speed:2.0)
+
 
 open Quaternion
-let testq = {q0 = 5.0; qv = (1.0, 2.0, 3.0)}
-let testq2 = {q0 = 4.0; qv = (3.0, 2.0, 1.0)}
-let test2mat = vectorizate testq
-let test_ruler = q_tr_eulerAngle testq 
-let () = show_mat test2mat; 
+
+
+let test_angle_radian = {yaw = angle2radian 0.14; pitch = angle2radian 0.28; roll = angle2radian 0.399}
+
+let res_q = eulerAngle_tr_q test_angle_radian
+let res_angle = q_tr_eulerAngle res_q
+
+let () = showq res_q;
+         Printf.printf "src radian: Z: %f X: %f Y: %f\n" test_angle_radian.yaw test_angle_radian.pitch test_angle_radian.roll;
+         Printf.printf "ruler radian: Z: %f X: %f Y: %f\n" res_angle.yaw res_angle.pitch res_angle.roll
+
+(* let () = show_mat test2mat; 
          Printf.printf "test q: %f\n" (mold testq); 
          showq (mul testq testq2);
          showq (get_vector_rotate_q (1., 2., 3.) (4., 5., 6.));
-         show_mat (q_tr_mat testq);
-         Printf.printf "ruler angle: yaw: %f pitch: %f roll: %f\n" test_ruler.yaw test_ruler.pitch test_ruler.roll 
+         show_mat (q_tr_mat testq); *)
+(* let () = Printf.printf "ruler angle: Z: %f X: %f Y: %f\n" test_ruler_angle.yaw test_ruler_angle.pitch test_ruler_angle.roll  *)

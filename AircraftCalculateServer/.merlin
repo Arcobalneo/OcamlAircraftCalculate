@@ -5,3 +5,6 @@ PKG stdio
 PKG core
 PKG angle
 PKG matrix
+PKG cohttp
+PKG cohttp-lwt-unix
+PKG yojson

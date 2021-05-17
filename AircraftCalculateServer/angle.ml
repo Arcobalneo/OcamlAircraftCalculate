@@ -4,7 +4,7 @@ type angle = float
 
 type radian = float
 
-type ruler_angle = {
+type ruler_angle_radian = {
     yaw:float;
     pitch:float;
     roll:float;
@@ -19,7 +19,7 @@ type angle_info = {
 }
 
 let angle2radian x = Const.pi *. x /. 180.
-
+let radian2angle x = x *. 180. /. Const.pi
 let check_iszero x = if (-.0.0001 < x && x < 0.0001) then 0. else x
 let sin_angle x = 
   let result = Maths.sin (angle2radian x) in 

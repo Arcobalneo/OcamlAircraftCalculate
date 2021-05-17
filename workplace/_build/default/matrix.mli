@@ -15,7 +15,10 @@ val mat2pos : Mat.mat -> pos
 val arr2_B2E : theta:angle -> phi:angle -> psi:angle -> arr2
 (*机体坐标系(B)到气流坐标系(A)旋转矩阵 *)
 val arr2_B2A : alpha:angle -> beta:angle -> arr2
+
 val pos_tr_B2A : pos -> alpha:angle -> beta:angle -> pos
+
+val pos_tr_B2E : pos -> theta:angle -> phi:angle -> psi:angle -> pos
 
 val map_arr2: f:(angle -> angle) -> arr2 -> arr2
 val iter_arr2 : f:(angle -> unit) -> arr2 -> unit

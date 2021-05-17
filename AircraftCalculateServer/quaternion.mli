@@ -26,4 +26,6 @@ val get_vector_rotate_q : float*float*float -> float*float*float -> q
 
 val q_tr_mat : q -> Mat.mat
 
-val q_tr_eulerAngle : q -> ruler_angle 
+val q_tr_eulerAngle : q -> ruler_angle_radian
+
+val eulerAngle_tr_q : ruler_angle_radian -> q

@@ -91,10 +91,23 @@ let q_tr_mat q :Mat.mat =
     let obj_arr2 = map_arr2 ~f:check_iszero arr2 in 
     creat_mat_byarr2 obj_arr2
 
-let q_tr_eulerAngle q : ruler_angle = 
+let q_tr_eulerAngle q : ruler_angle_radian = 
     let (x, y, z) = q.qv in 
     let w = q.q0 in 
-    let yaw_v = Maths.atan2 (2.*.w*.z +. 2.*.x*.y) (1. -. 2.*.(Maths.sqr y) -. 2.*.(Maths.sqr z)) in
-    let pitch_v = Maths.asin (2.*.w*.y -. 2.*.z*.x) in 
-    let roll_v = Maths.atan2 (2.*.w*.x +. 2.*.y*.z) (1. -. 2.*.(Maths.sqr x) -. 2.*.(Maths.sqr y)) in 
+    let yaw_v = Maths.asin (2.*.(w*.y -. x*.z) ) in
+    let pitch_v = Maths.atan2 (2.*.w*.z +. 2.*.x*.y) (1. -. 2.*.y*.y -. 2.*.z*.z) in 
+    let roll_v = Maths.atan2 (2.*.w*.x +. 2.*.y*.z) (1. -. 2.*.x*.x -. 2.*.y*.y) in 
     {yaw = yaw_v; pitch = pitch_v; roll = roll_v}
+   (* let yaw_v = Maths.atan2 (2.*.w*.z +. 2.*.x*.y) (1. -. 2.*.y*.y -. 2.*.z*.z) in
+    let pitch_v = Maths.asin (2.*.w*.y -. 2.*.z*.x) in 
+    let roll_v = Maths.atan2 (2.*.w*.x +. 2.*.y*.z) (1. -. 2.*.x*.x -. 2.*.y*.y) in  *)
+
+let eulerAngle_tr_q r : q = 
+    let yaw = r.yaw in 
+    let pitch = r.pitch in 
+    let roll = r.roll in 
+    let w = ( cos (roll /. 2.) *. cos (yaw /. 2.) *. cos (pitch /. 2.)  +. sin (roll /. 2.) *. sin (yaw /. 2.) *. sin (pitch /. 2.) ) in 
+    let x = ( sin (roll /. 2.) *. cos (yaw /. 2.) *. cos (pitch /. 2.)  -. cos (roll /. 2.) *. sin (yaw /. 2.) *. sin (pitch /. 2.) ) in 
+    let y = ( cos (roll /. 2.) *. sin (yaw /. 2.) *. cos (pitch /. 2.)  +. sin (roll /. 2.) *. cos (yaw /. 2.) *. sin (pitch /. 2.) ) in 
+    let z = ( cos (roll /. 2.) *. cos (yaw /. 2.) *. sin (pitch /. 2.)  -. sin (roll /. 2.) *. sin (yaw /. 2.) *. cos (pitch /. 2.) ) in 
+    {q0 = w; qv = (x, y, z)}

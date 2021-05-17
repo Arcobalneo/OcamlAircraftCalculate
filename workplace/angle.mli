@@ -4,7 +4,7 @@ type angle = float
 
 type radian = float
 
-type ruler_angle = {
+type ruler_angle_radian = {
     yaw:float;
     pitch:float;
     roll:float;
@@ -19,6 +19,8 @@ type angle_info = {
 }
 
 val angle2radian : angle -> radian
+
+val radian2angle : radian -> angle
 
 val sin_angle : angle -> float
 
