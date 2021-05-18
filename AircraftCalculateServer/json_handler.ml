@@ -22,8 +22,9 @@ let get_angleInfo json name : angle_info =
 
 let jsonproc json : string = 
     let angle = get_angleInfo json "PosInfo" in 
-    let pos_B2A = pos_tr_B2A (get_posInfo json "PosInfo") ~alpha:(angle.alpha) ~beta:(angle.beta) in 
-    let pos_B2E = pos_tr_B2E (get_posInfo json "PosInfo") ~theta:(angle.theta) ~phi:(angle.phi) ~psi:(angle.psi) in 
+    let pos_E2B = pos_tr_E2B (get_posInfo json "PosInfo") ~theta:(angle.theta) ~phi:(angle.phi) ~psi:(angle.psi) in 
+    let pos_B2A = pos_tr_B2A pos_E2B ~alpha:(angle.alpha) ~beta:(angle.beta) in 
+    let pos_B2E = pos_tr_B2E pos_E2B ~theta:(angle.theta) ~phi:(angle.phi) ~psi:(angle.psi) in 
     let back_json = `Assoc[
                             (
                                 "PosInfoRes_B2A", 
@@ -44,12 +45,12 @@ let jsonproc json : string =
                                 ]
                             );
                             (
-                                "TestRes", 
+                                "PosInfoRes_E2B", 
                                 `List
                                 [
-                                    `Float pos_B2A.x;
-                                    `Float pos_B2A.y;
-                                    `Float pos_B2A.z;
+                                    `Float pos_E2B.x;
+                                    `Float pos_E2B.y;
+                                    `Float pos_E2B.z;
                                 ]
                             );
                         ] in 

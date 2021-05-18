@@ -46,6 +46,26 @@ let arr2_B2E ~(theta:float) ~(phi:float) ~(psi:float) : arr2=
   ] in 
   map_arr2 ~f:check_iszero src_arr2
 
+let arr2_E2B ~(theta:float) ~(phi:float) ~(psi:float) : arr2= 
+  let src_arr2 = [
+    [
+      (cos_angle theta) *. (cos_angle psi); 
+      (cos_angle theta) *. (sin_angle psi); 
+      -.(sin_angle theta);
+    ];
+    [
+      (sin_angle theta) *. (cos_angle psi) *. (sin_angle phi) -. (sin_angle psi) *. (cos_angle phi);
+      (sin_angle theta) *. (sin_angle psi) *. (sin_angle phi) +. (cos_angle psi) *. (cos_angle phi);
+      (cos_angle theta) *. (sin_angle phi);
+    ];
+    [
+      (sin_angle theta) *. (cos_angle psi) *. (cos_angle phi) +. (sin_angle psi) *. (sin_angle phi);
+      (sin_angle theta) *. (sin_angle psi) *. (cos_angle phi) -. (cos_angle psi) *. (sin_angle phi);
+      (cos_angle phi) *. (cos_angle theta);
+    ];
+  ] in 
+  map_arr2 ~f:check_iszero src_arr2
+
 let arr2_B2A ~(alpha:float) ~(beta:float) : arr2 = 
   let src_arr2 = [
     [
@@ -89,6 +109,13 @@ let pos_tr_B2A pos ~(alpha:angle) ~(beta:angle) : pos =
 let pos_tr_B2E pos ~(theta:angle) ~(phi:angle) ~(psi:angle) : pos = 
   let pos_mat = pos2mat pos in 
   let tr_arr2 = arr2_B2E ~theta:theta ~phi:phi ~psi:psi in 
+  let tr_mat = creat_mat_byarr2 tr_arr2 in 
+  let res_mat = Mat.(tr_mat *@ pos_mat) in 
+  mat2pos res_mat
+
+let pos_tr_E2B pos ~(theta:angle) ~(phi:angle) ~(psi:angle) : pos = 
+  let pos_mat = pos2mat pos in 
+  let tr_arr2 = arr2_E2B ~theta:theta ~phi:phi ~psi:psi in 
   let tr_mat = creat_mat_byarr2 tr_arr2 in 
   let res_mat = Mat.(tr_mat *@ pos_mat) in 
   mat2pos res_mat
