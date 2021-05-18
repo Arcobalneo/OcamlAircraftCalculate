@@ -9,8 +9,10 @@ public class UIManager : MonoBehaviour
     public GameObject BodyPosPanel;
     public GameObject AirPosPanel;
     public GameObject EarthPosPanel;
+    public GameObject AxisSelectPanel;
     public GameObject PauseMenu;
     public GameObject VelocityPanel;
+    
 
     private bool isGamePaused = false;
 
@@ -122,6 +124,7 @@ public class UIManager : MonoBehaviour
     #region PauseMenu
     public void Pause()
     {
+        AxisSelectPanel.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<AircraftController>().UpdateUI();
         AirPosReset();
         BodyPosReset();
@@ -133,6 +136,7 @@ public class UIManager : MonoBehaviour
 
     public void Resume()
     {
+        AxisSelectPanel.SetActive(true);
         PauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         isGamePaused = false;
